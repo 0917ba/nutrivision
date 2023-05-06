@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/2023-ISHS-JRH/static/css/main.5885b42c.css",
-    "main.js": "/2023-ISHS-JRH/static/js/main.bc810222.js",
+    "main.js": "/2023-ISHS-JRH/static/js/main.bd6255cb.js",
     "index.html": "/2023-ISHS-JRH/index.html",
     "main.5885b42c.css.map": "/2023-ISHS-JRH/static/css/main.5885b42c.css.map",
-    "main.bc810222.js.map": "/2023-ISHS-JRH/static/js/main.bc810222.js.map"
+    "main.bd6255cb.js.map": "/2023-ISHS-JRH/static/js/main.bd6255cb.js.map"
   },
   "entrypoints": [
     "static/css/main.5885b42c.css",
-    "static/js/main.bc810222.js"
+    "static/js/main.bd6255cb.js"
   ]
 }
