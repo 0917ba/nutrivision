@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/2023-ISHS-JRH/static/css/main.5885b42c.css",
-    "main.js": "/2023-ISHS-JRH/static/js/main.c132d18d.js",
+    "main.css": "/2023-ISHS-JRH/static/css/main.acad72eb.chunk.css",
+    "main.js": "/2023-ISHS-JRH/static/js/main.e1eab46e.chunk.js",
+    "main.js.map": "/2023-ISHS-JRH/static/js/main.e1eab46e.chunk.js.map",
+    "runtime-main.js": "/2023-ISHS-JRH/static/js/runtime-main.84e39088.js",
+    "runtime-main.js.map": "/2023-ISHS-JRH/static/js/runtime-main.84e39088.js.map",
+    "static/js/2.71a2bd31.chunk.js": "/2023-ISHS-JRH/static/js/2.71a2bd31.chunk.js",
+    "static/js/2.71a2bd31.chunk.js.map": "/2023-ISHS-JRH/static/js/2.71a2bd31.chunk.js.map",
     "index.html": "/2023-ISHS-JRH/index.html",
-    "main.5885b42c.css.map": "/2023-ISHS-JRH/static/css/main.5885b42c.css.map",
-    "main.c132d18d.js.map": "/2023-ISHS-JRH/static/js/main.c132d18d.js.map"
+    "static/css/main.acad72eb.chunk.css.map": "/2023-ISHS-JRH/static/css/main.acad72eb.chunk.css.map",
+    "static/js/2.71a2bd31.chunk.js.LICENSE.txt": "/2023-ISHS-JRH/static/js/2.71a2bd31.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/css/main.5885b42c.css",
-    "static/js/main.c132d18d.js"
+    "static/js/runtime-main.84e39088.js",
+    "static/js/2.71a2bd31.chunk.js",
+    "static/css/main.acad72eb.chunk.css",
+    "static/js/main.e1eab46e.chunk.js"
   ]
 }
