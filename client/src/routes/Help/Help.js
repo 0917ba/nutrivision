@@ -55,17 +55,40 @@ function Help() {
 
         <div className={styles.decodiv}>
           <div>
+<<<<<<< Updated upstream
             <li className={styles.decoli}>영양성분</li>
             <p className={styles.psize}>
               가공 식품 표면의 품목보고번호를 인식시키면 해당식품에 대한
               영양성분과 일일적정섭취량 등의 정보 제공
             </p>
+=======
+            <li className={styles.decoli}>식품정보</li>
+            <ul className={styles.decoul}>
+              <li className={styles.nutri}>가공식품</li>
+              <p className={styles.pmargin}>
+                카메라를 이용해 가공 식품 표면을 촬영하며 식품 표면의
+                품목보고번호를 인식시키면 해당식품에 대한 영양성분과 일일 적정
+                섭취량 등의 정보 제공
+              </p>
+              <li className={styles.nutri}>음식점</li>
+              <p className={styles.pmargin}>
+                시중 음식점 브랜드명과 식품명을 음성으로 입력하면 해당 식품에
+                대한 영양성분 정보 제공
+              </p>
+            </ul>
+>>>>>>> Stashed changes
           </div>
 
           <div>
             <li className={styles.decoli}>유통기한</li>
+<<<<<<< Updated upstream
             <p className={styles.psize}>
               국내 가공 식품에 대한 유통기한을 인식하여 정보 제공
+=======
+            <p>
+              카메라를 이용해 국내 가공 식품 표면의 유통기한을 인식시키면 식품의
+              유통기한 정보 제공
+>>>>>>> Stashed changes
             </p>
             <ul>
               <li>
@@ -84,6 +107,7 @@ function Help() {
           </div>
 
           <div>
+<<<<<<< Updated upstream
             <li className={styles.decoli}>음식점</li>
             <p className={styles.psize}>
               시중 음식점 브랜드명과 식품명을 음성으로 인식해 식품에 대한
@@ -91,6 +115,19 @@ function Help() {
             </p>
           </div>
 
+=======
+            <li className={styles.decoli}>재활용</li>
+            <p>
+              카메라를 이용해 가공 식품 표면의 재활용 마크를 인식시키면 해당
+              식품 포장지의 분리배출 방법 정보 제공
+            </p>
+          </div>
+
+          <div>
+            <li className={styles.decoli}>설정</li>
+            <p>음성 속도 조절 및 시각장애인 모드&비시각장애인 모드 전환 가능</p>
+          </div>
+>>>>>>> Stashed changes
           <hr className={styles.decohr} />
         </div>
 

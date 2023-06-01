@@ -103,6 +103,36 @@ function Nutrients() {
   };
 
   useEffect(() => {
+<<<<<<< Updated upstream
+=======
+    let intervalId = 0;
+
+    const notFound = async () => {
+      await textToSpeech("품목보고번호가 감지되지 않았습니다.", 2);
+      await textToSpeech("홈 화면으로 이동합니다.", 2);
+      navigateTo("/home");
+    };
+
+    const init = async () => {
+      let cycleCnt = 0;
+      await textToSpeech("품목보고번호 탐색을 시작합니다.", 2);
+      await textToSpeech("카메라를 식품에 가까이 대어주세요.", 2);
+      const id = setInterval(() => {
+        if (intervalId === 0) intervalId = id;
+        if (cycleCnt >= 70) {
+          console.log("not found");
+          clearInterval(intervalId);
+          notFound();
+        }
+        if (search.current) {
+          drawToCanvas();
+          sendImage();
+          cycleCnt += 1;
+        }
+      }, 350);
+    };
+
+>>>>>>> Stashed changes
     const preventGoBack = () => {
       window.history.pushState(null, "", window.location.href);
     };
