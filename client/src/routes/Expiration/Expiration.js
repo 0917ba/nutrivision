@@ -71,7 +71,10 @@ function Expiration() {
     const init = async () => {
       let cycleCount = 0;
       await textToSpeech("유통기한 탐색을 시작합니다.", 2);
-      await textToSpeech("카메라를 식품에 가까이 대어주세요.", 2);
+      await textToSpeech(
+        "카메라를 식품에 가까이 대고, 유통기한이 인식될 때까지 카메라를 천천히 이동시켜주세요.",
+        2
+      );
       const id = setInterval(() => {
         if (intervalId === 0) intervalId = id;
         if (cycleCount >= 300) {

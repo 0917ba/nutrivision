@@ -1,9 +1,10 @@
-import record from "../routes/record.mp3"
+import { getBeap } from "./beap";
+import { playAudio } from "./tts";
 
 async function speechToText(interval = 3000) {
   //play record.mp3
-  const audio = new Audio(record);
-  audio.play();
+  const beap = getBeap();
+  await playAudio(beap, 3);
   //final return value
   let sttResult = "";
 

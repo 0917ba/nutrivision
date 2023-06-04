@@ -5,7 +5,7 @@ import recommendedNutrients from "./recommended";
 
 let nutrients = {};
 
-async function readNutreintsObject(element) {
+async function readNutrientsObject(element) {
   const name = element.name;
   const calorie = element.calorie;
   const carbohydrate = element.nutrients.carbohydrate;
@@ -87,25 +87,26 @@ async function getNutrientsRate() {
 }
 
 async function readNutrientsRate(nutrientsObject) {
+  console.log(nutrientsObject);
   await textToSpeech(
-    "2000칼로리를 기준으로 한 1일 영양성분 기준치에 대하여," +
-      nutrientsObject.calorieRate +
-      "퍼센트의 칼로리, " +
-      nutrientsObject.carbohydrateRate +
-      "퍼센트의 탄수화물, " +
-      nutrientsObject.proteinRate +
-      "퍼센트의 단백질, " +
-      nutrientsObject.fatRate +
-      "퍼센트의 지방, " +
-      nutrientsObject.sugarRate +
-      "퍼센트의 당류, " +
-      nutrientsObject.sodiumRate +
-      "퍼센트의 나트륨, " +
-      nutrientsObject.cholesterolRate +
-      "퍼센트의 콜레스테롤, " +
-      nutrientsObject.saturatedFatRate +
-      "퍼센트의 포화지방을 섭취할 수 있습니다."
+    "2000칼로리를 기준으로 한, 1일 영양성분 기준치에 대하여,",
+    2
+  );
+  await textToSpeech(nutrientsObject.calorieRate + "퍼센트의 칼로리", 2);
+  await textToSpeech(nutrientsObject.carbohydrateRate + "퍼센트의 탄수화물", 2);
+  await textToSpeech(nutrientsObject.proteinRate + "퍼센트의 단백질", 2);
+  await textToSpeech(nutrientsObject.fatRate + "퍼센트의 지방", 2);
+  await textToSpeech(nutrientsObject.sugarRate + "퍼센트의 당류", 2);
+  await textToSpeech(nutrientsObject.sodiumRate + "퍼센트의 나트륨", 2);
+  await textToSpeech(
+    nutrientsObject.cholesterolRate + "퍼센트의 콜레스테롤",
+    2
+  );
+  await textToSpeech(
+    nutrientsObject.saturatedFatRate +
+      "퍼센트의 포화지방을 섭취할 수 있습니다.",
+    2
   );
 }
 
-export { readNutreintsObject, askForRate, getNutrientsRate, readNutrientsRate };
+export { readNutrientsObject, askForRate, getNutrientsRate, readNutrientsRate };

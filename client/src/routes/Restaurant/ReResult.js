@@ -4,7 +4,7 @@ import { speechToText } from "../../js/stt";
 import { positiveResponse } from "../../js/sttHandle";
 import { useEffect, useState } from "react";
 import {
-  readNutreintsObject,
+  readNutrientsObject,
   askForRate,
   getNutrientsRate,
   readNutrientsRate,
@@ -18,8 +18,6 @@ function ReResult() {
     console.log("Redirecting...");
   };
 
-  const [showRate, setShowRate] = useState(false);
-
   const location = useLocation();
   const result = location.state.resNutrients.nuts;
   const nutrients = result.nutrients;
@@ -30,15 +28,14 @@ function ReResult() {
 
   useEffect(() => {
     const readNutrients = async () => {
-      await readNutreintsObject(result);
+      await readNutrientsObject(result);
 
       const resForRate = await askForRate();
       if (resForRate === true) {
-        const nutreintsRate = await getNutrientsRate(result);
-        setRate(nutreintsRate);
-        console.log(rate);
+        const nutrientsRate = await getNutrientsRate(result);
+        setRate(nutrientsRate);
         setIsRateLoaded(true);
-        await readNutrientsRate(nutreintsRate);
+        await readNutrientsRate(nutrientsRate);
       }
 
       await textToSpeech("영양성분 정보를 다시 들려드릴까요?", 1);

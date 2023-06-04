@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { textToSpeech, stopTTS } from "../../js/tts";
 import { speechToText } from "../../js/stt";
 import { setNutrients } from "../../js/nutrientsHandle";
-import { restaurantsList, positiveResponse } from "../../js/sttHandle";
+import {
+  restaurantsList,
+  positiveResponse,
+  normalizeRestaurantName,
+} from "../../js/sttHandle";
 import styles from "./Restaurant.module.css";
 
 function Restaurant() {
@@ -25,16 +29,13 @@ function Restaurant() {
       const json = await response.json();
 
       if (json.I2790.total_count === "0") {
-        setDisplayText("찾으시는 제품이 없습니다...");
-        await textToSpeech("찾으시는 제품이 없습니다...", 1);
-        await textToSpeech("첫 화면으로 이동합니다.", 1);
         return null;
       } else {
         return json;
       }
     };
 
-    const selectProduct = async () => {
+    const selectProduct = async (rawNutrients) => {
       let isCorrectRes = false;
       let nutrients = null;
       for (const nutrientsData of rawNutrients.I2790.row) {
@@ -56,36 +57,59 @@ function Restaurant() {
       if (isCorrectRes) {
         navigateTo("/restaurant/result", { resNutrients: nutrients });
       } else {
-        setDisplayText("찾으시는 메뉴가 존재하지 않습니다...");
-        await textToSpeech("찾으시는 메뉴가 존재하지 않습니다...", 1);
-        await textToSpeech("첫 화면으로 이동합니다.", 1);
+        setDisplayText("찾으시는 메뉴가 존재하지 않습니다.");
+        await textToSpeech(
+          "찾으시는 메뉴가 존재하지 않습니다. 홈 화면으로 돌아갑니다.",
+          1
+        );
         navigateTo("/home");
       }
     };
 
+    setDisplayText("주문하실 메뉴의 이름을 말씀해주세요.");
+    await textToSpeech("주문하실 메뉴의 이름을 말씀해주세요.", 1);
+    userMenu = await speechToText(3000);
+
     const rawNutrients = await fetchNutrients();
-    if (rawNutrients !== null) selectProduct();
-    else navigateTo("/home");
+    if (rawNutrients !== null) selectProduct(rawNutrients);
+    else if (userMenu === "취소") {
+      setDisplayText("첫 화면으로 이동합니다.");
+      await textToSpeech("첫 화면으로 이동합니다.", 1);
+      navigateTo("/home");
+    } else {
+      setDisplayText(
+        "찾으시는 메뉴가 존재하지 않습니다. 다시 말씀해주세요. 취소하려면 '취소'라고 말씀해주세요."
+      );
+      await textToSpeech(
+        "찾으시는 메뉴가 존재하지 않습니다. 다시 말씀해주세요. 취소하려면 '취소'라고 말씀해주세요.",
+        1
+      );
+      getNutrients();
+    }
   };
 
   useEffect(() => {
     const init = async () => {
-      console.log("init started!");
-
       setDisplayText("방문하신 매장의 이름을 말씀해주세요.");
       await textToSpeech("방문하신 매장의 이름을 말씀해주세요.", 1);
       userRestaurant = await speechToText(3000);
 
       if (restaurantsList.has(userRestaurant)) {
-        setDisplayText("주문하실 메뉴의 이름을 말씀해주세요.");
-        await textToSpeech("주문하실 메뉴의 이름을 말씀해주세요.", 1);
-        userMenu = await speechToText(3000);
+        userRestaurant = normalizeRestaurantName(userRestaurant);
         getNutrients();
-      } else {
-        setDisplayText("찾으시는 매장이 존재하지 않습니다...");
-        await textToSpeech("찾으시는 매장이 존재하지 않습니다...", 1);
+      } else if (userRestaurant === "취소") {
+        setDisplayText("첫 화면으로 이동합니다.");
         await textToSpeech("첫 화면으로 이동합니다.", 1);
         navigateTo("/home");
+      } else {
+        setDisplayText(
+          "찾으시는 매장이 존재하지 않습니다. 다시 말씀해주세요. 취소하려면 '취소'라고 말씀해주세요."
+        );
+        await textToSpeech(
+          "찾으시는 매장이 존재하지 않습니다. 다시 말씀해주세요. 취소하려면 '취소'라고 말씀해주세요.",
+          1
+        );
+        init();
       }
     };
 

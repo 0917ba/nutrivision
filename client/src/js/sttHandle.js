@@ -113,4 +113,42 @@ const negativeResponse = new Set([
   "아녀",
 ]);
 
-export { restaurantsList, positiveResponse, negativeResponse };
+function normalizeRestaurantName(restaurantName) {
+  switch (restaurantName) {
+    case "크리스피크림":
+      return "크리스피크림도넛";
+    case "칠번가피자":
+      return "7번가피자";
+    case "앤티앤스":
+      return "앤티앤스프레즐";
+    case "이디야":
+      return "이디야커피";
+    case "난타오천":
+      return "난타5000";
+    case "반올림피자":
+      return "반올림피자샵";
+    case "백다방":
+    case "백따방":
+    case "빽따방":
+      return "빽다방";
+    case "앤젤리너스커피":
+      return "앤젤리너스";
+    case "드롭탑커피":
+      return "드롭탑";
+    case "할리스":
+      return "할리스커피";
+    case "파리바게트":
+      return "파리바게뜨";
+    case "꾸브라꼬":
+      return "꾸브라꼬 숯불두마리 치킨";
+    default:
+      return restaurantName;
+  }
+}
+
+export {
+  restaurantsList,
+  positiveResponse,
+  negativeResponse,
+  normalizeRestaurantName,
+};

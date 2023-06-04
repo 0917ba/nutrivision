@@ -16,9 +16,7 @@ audio.addEventListener("ended", () => {
   }
 });
 
-async function textToSpeech(text, importantRate = 1) {
-  const audioSource = await getAudioSource(text, speakRate);
-
+async function playAudio(audioSource, importantRate = 1) {
   if (textQueue.length === 0) {
     textQueue.push({ audioSource, importantRate });
     TQlength++;
@@ -54,6 +52,11 @@ async function textToSpeech(text, importantRate = 1) {
       { once: true }
     );
   });
+}
+
+async function textToSpeech(text, importantRate = 1) {
+  const audioSource = await getAudioSource(text, speakRate);
+  await playAudio(audioSource, importantRate);
 }
 
 async function getAudioSource(text, speakRate = "1.4") {
@@ -134,4 +137,5 @@ export {
   stopTTS,
   getSpeakRate,
   setSpeakRate,
+  playAudio,
 };

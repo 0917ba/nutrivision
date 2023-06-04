@@ -4,7 +4,7 @@ import { speechToText } from "../../js/stt";
 import { useEffect, useState } from "react";
 import { positiveResponse } from "../../js/sttHandle";
 import {
-  readNutreintsObject,
+  readNutrientsObject,
   askForRate,
   getNutrientsRate,
   readNutrientsRate,
@@ -28,15 +28,14 @@ function NuResult() {
 
   useEffect(() => {
     const readNutrients = async () => {
-      await readNutreintsObject(result);
+      await readNutrientsObject(result);
 
       const resForRate = await askForRate();
       if (resForRate === true) {
-        const nutreintsRate = await getNutrientsRate(result);
-        setRate(nutreintsRate);
-        console.log(rate);
+        const nutrientsRate = await getNutrientsRate(result);
+        setRate(nutrientsRate);
         setIsRateLoaded(true);
-        await readNutrientsRate(nutreintsRate);
+        await readNutrientsRate(nutrientsRate);
       }
 
       await textToSpeech("영양성분 정보를 다시 들려드릴까요?", 1);
