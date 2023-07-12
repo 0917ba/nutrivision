@@ -1,6 +1,6 @@
 {
-  "short_name": "뉴트리비전",
-  "name": "뉴트리비전",
+  "short_name": "Nutrivision",
+  "name": "Nutrivision",
   "icons": [
     {
       "src": "AppLogo.png",
@@ -20,7 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "orientation": "portrait",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
