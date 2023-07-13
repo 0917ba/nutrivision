@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/2023-ISHS-JRH/static/css/main.dc9f8310.chunk.css",
-    "main.js": "/2023-ISHS-JRH/static/js/main.d91a43a3.chunk.js",
-    "main.js.map": "/2023-ISHS-JRH/static/js/main.d91a43a3.chunk.js.map",
+    "main.css": "/2023-ISHS-JRH/static/css/main.cc305f23.chunk.css",
+    "main.js": "/2023-ISHS-JRH/static/js/main.db9a169c.chunk.js",
+    "main.js.map": "/2023-ISHS-JRH/static/js/main.db9a169c.chunk.js.map",
     "runtime-main.js": "/2023-ISHS-JRH/static/js/runtime-main.fc0d4212.js",
     "runtime-main.js.map": "/2023-ISHS-JRH/static/js/runtime-main.fc0d4212.js.map",
     "static/js/2.41effd2e.chunk.js": "/2023-ISHS-JRH/static/js/2.41effd2e.chunk.js",
@@ -11,7 +11,7 @@
     "service-worker.js": "/2023-ISHS-JRH/service-worker.js",
     "service-worker.js.LICENSE.txt": "/2023-ISHS-JRH/service-worker.js.LICENSE.txt",
     "service-worker.js.map": "/2023-ISHS-JRH/service-worker.js.map",
-    "static/css/main.dc9f8310.chunk.css.map": "/2023-ISHS-JRH/static/css/main.dc9f8310.chunk.css.map",
+    "static/css/main.cc305f23.chunk.css.map": "/2023-ISHS-JRH/static/css/main.cc305f23.chunk.css.map",
     "static/js/2.41effd2e.chunk.js.LICENSE.txt": "/2023-ISHS-JRH/static/js/2.41effd2e.chunk.js.LICENSE.txt",
     "static/media/Glass.022913b9.jpg": "/2023-ISHS-JRH/static/media/Glass.022913b9.jpg",
     "static/media/ISHSlogo.0008d19e.png": "/2023-ISHS-JRH/static/media/ISHSlogo.0008d19e.png",
@@ -28,7 +28,7 @@
   "entrypoints": [
     "static/js/runtime-main.fc0d4212.js",
     "static/js/2.41effd2e.chunk.js",
-    "static/css/main.dc9f8310.chunk.css",
-    "static/js/main.d91a43a3.chunk.js"
+    "static/css/main.cc305f23.chunk.css",
+    "static/js/main.db9a169c.chunk.js"
   ]
 }
