@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/2023-ISHS-JRH/static/css/main.cc305f23.chunk.css",
-    "main.js": "/2023-ISHS-JRH/static/js/main.9320031b.chunk.js",
-    "main.js.map": "/2023-ISHS-JRH/static/js/main.9320031b.chunk.js.map",
+    "main.js": "/2023-ISHS-JRH/static/js/main.3c72c6ff.chunk.js",
+    "main.js.map": "/2023-ISHS-JRH/static/js/main.3c72c6ff.chunk.js.map",
     "runtime-main.js": "/2023-ISHS-JRH/static/js/runtime-main.fc0d4212.js",
     "runtime-main.js.map": "/2023-ISHS-JRH/static/js/runtime-main.fc0d4212.js.map",
     "static/js/2.41effd2e.chunk.js": "/2023-ISHS-JRH/static/js/2.41effd2e.chunk.js",
@@ -29,6 +29,6 @@
     "static/js/runtime-main.fc0d4212.js",
     "static/js/2.41effd2e.chunk.js",
     "static/css/main.cc305f23.chunk.css",
-    "static/js/main.9320031b.chunk.js"
+    "static/js/main.3c72c6ff.chunk.js"
   ]
 }
