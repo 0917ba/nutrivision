@@ -11,6 +11,8 @@ import Rcresult from "./routes/Recycle/Rcresult";
 import Help from "./routes/Help/Help";
 import First from "./routes/First";
 import FirstTutorial from "./routes/FirstTutorial";
+import Allergy from "./routes/Allergy/Allergy";
+import AlResult from "./routes/Allergy/AlResult";
 
 function App() {
   //<Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
@@ -31,6 +33,8 @@ function App() {
         <Route path={`${process.env.PUBLIC_URL}/`} element={<First />} />
         <Route path="/" element={<First />} />
         <Route path="/tutorial" element={<FirstTutorial />} />
+        <Route path="/allergy" element={<Allergy />} />
+        <Route path="/allergy/result" element={<AlResult />} />
       </Routes>
     </Router>
   );

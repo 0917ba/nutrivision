@@ -1,5 +1,6 @@
 import setting from "../../images/Setting.png";
 import close from "../../images/Close.png";
+import logo from "../../routes/logo.jpg";
 
 function ImgButton({ onClick, classname, imgclassname, imgSource }) {
   let imgSourceObject = imgSource;
@@ -10,6 +11,8 @@ function ImgButton({ onClick, classname, imgclassname, imgSource }) {
     case "close":
       imgSourceObject = close;
       break;
+    case "logo":
+      imgSourceObject = logo;
   }
   return (
     <button onClick={onClick} className={classname}>

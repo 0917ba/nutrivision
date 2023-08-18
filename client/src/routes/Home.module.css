@@ -6,7 +6,10 @@
   margin-top: 5vh;
   margin-bottom: 0px;
 }
-
+.backcolor {
+  background-color: white;
+  border: none;
+}
 .myButtonone {
   font-family: "Jua", sans-serif;
 

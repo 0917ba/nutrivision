@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../components/Global/Button";
-import ImgButton from "../components/Global/ImgButton";
+import ImgButton from "../components/Global/imgButton";
 import Modal from "../components/Setting/Modal";
 import { textToSpeech } from "../js/tts";
 import { speechToText } from "../js/stt";
@@ -82,7 +82,7 @@ function FirstTutorial() {
 
           <Button
             classname={styles.myButtontwo}
-            text="도움말"
+            text="알레르기"
             //onClick={() => navigateTo("/help")}
           />
         </div>

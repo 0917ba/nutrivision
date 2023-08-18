@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../components/Global/Button";
-import ImgButton from "../components/Global/ImgButton";
+import ImgButton from "../components/Global/imgButton";
 import Modal from "../components/Setting/Modal";
 import { textToSpeech } from "../js/tts";
 import { speechToText } from "../js/stt";
@@ -20,7 +20,7 @@ function Home() {
 
   const init = async () => {
     await textToSpeech(
-      "식품 정보, 유통기한, 재활용 방법, 도움말, 설정 중 원하시는 기능을 말씀해주세요.",
+      "식품 정보, 유통기한, 재활용 방법, 알레르기, 도움말, 설정 중 원하시는 기능을 말씀해주세요.",
       3
     );
     const getButton = async () => {
@@ -64,6 +64,13 @@ function Home() {
         case "재활용":
           await textToSpeech("재활용 방법 찾기 화면으로 이동합니다.", 2);
           navigateTo("/recycle");
+          break;
+
+        case "알레르기":
+        case "알러지":
+        case "알레르지":
+          await textToSpeech("알레르기 유발 성분 찾기 화면으로 이동합니다.", 2);
+          navigateTo("/allergy");
           break;
 
         case "도움말":
@@ -114,7 +121,12 @@ function Home() {
       </div>
 
       <div className={styles.aboutlogo}>
-        <img className={styles.titleimage} src={Logo}></img>
+        <ImgButton
+          classname={styles.backcolor}
+          imgclassname={styles.titleimage}
+          imgSource={Logo}
+          onClick={() => navigateTo("/help")}
+        />
       </div>
       <div>
         <div className={styles.divbtnone}>
@@ -139,8 +151,8 @@ function Home() {
 
           <Button
             classname={styles.myButtontwo}
-            text="도움말"
-            onClick={() => navigateTo("/help")}
+            text="알레르기"
+            //onClick={() => navigateTo("/allergy")}
           />
         </div>
       </div>
