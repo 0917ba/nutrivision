@@ -1,23 +1,23 @@
-import { getBeap } from "./beap";
-import { playAudio } from "./tts";
+import { getBeap } from './beap';
+import { playAudio } from './tts';
 
-async function speechToText(interval = 3000) {
+async function speechToText(interval = 3000): Promise<string> {
   //play record.mp3
   const beap = getBeap();
   await playAudio(beap, 3);
   //final return value
-  let sttResult = "";
+  let sttResult = '';
 
   //audioBase64: plain b64 string
-  const b64AudioToString = async (audioBase64) => {
+  const b64AudioToString = async (audioBase64: string) => {
     const url =
-      "https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyCxnSFvcQd6a17xfB4nDwDafJH_juHSNA0";
+      'https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyCxnSFvcQd6a17xfB4nDwDafJH_juHSNA0';
 
     // POST data
     const data = {
       config: {
-        encoding: "WEBM_OPUS",
-        languageCode: "ko-KR",
+        encoding: 'WEBM_OPUS',
+        languageCode: 'ko-KR',
         audio_channel_count: 1,
       },
       audio: {
@@ -27,9 +27,9 @@ async function speechToText(interval = 3000) {
 
     // POST request
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json; charset=UTF-8",
+        'content-type': 'application/json; charset=UTF-8',
       },
       body: JSON.stringify(data),
     });
@@ -54,24 +54,25 @@ async function speechToText(interval = 3000) {
 
   //start & stop recording
   return new Promise((resolve) => {
-    console.log("recording start!");
+    console.log('recording start!');
     recorder.start();
 
     setTimeout(() => {
       recorder.stop();
-      console.log("recording stop!");
+      console.log('recording stop!');
     }, interval);
 
     recorder.addEventListener(
-      "dataavailable",
+      'dataavailable',
       (event) => {
         const reader = new FileReader();
         reader.readAsDataURL(event.data);
 
         reader.onloadend = async () => {
+          if (!reader.result || typeof reader.result !== 'string') return;
           const base64String = reader.result.replace(
-            "data:audio/webm;codecs=opus;base64,",
-            ""
+            'data:audio/webm;codecs=opus;base64,',
+            ''
           );
           sttResult = await b64AudioToString(base64String);
           console.log(sttResult);
