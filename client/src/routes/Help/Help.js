@@ -104,6 +104,15 @@ function Help() {
           </div>
 
           <div>
+            <li className={styles.decoli}>알레르기</li>
+            <p>
+              카메라를 이용해 가공 식품 표면의 알레르기 유발성분을 인식시키면
+              해당 식품의 알레르기 유발성분 정보 제공 하지만, 인식 확률이 100%가
+              아니므로, 잘못 인식될 경우가 있으므로 주의가 필요함
+            </p>
+          </div>
+
+          <div>
             <li className={styles.decoli}>설정</li>
             <p>음성 속도 조절 및 시각장애인 모드&비시각장애인 모드 전환 가능</p>
           </div>
