@@ -14,17 +14,6 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./celestial-shore-380106-8271a95
 client = vision.ImageAnnotatorClient()
 
 
-# f = open("./img.txt", "r")
-# imagestring = f.readline()
-# content = base64.b64decode(imagestring)
-# image = vision.Image(content=content)
-# response = client.text_detection(image=image)
-# texts = response.text_annotations
-
-# for text in texts:
-#     print(text.description)
-
-
 app = Flask(__name__)
 CORS(app)
 
@@ -32,7 +21,6 @@ CORS(app)
 @app.route("/")
 def main():
     return "not here"
-
 
 
 @app.route("/utong", methods=['POST'])
@@ -133,14 +121,14 @@ def recycle():
     image = vision.Image(content= content)
 
     response = client.text_detection(image=image)
-    texts = response.text_annotations
+    try:
+        texts = response.text_annotations[0].description
+    except:
+        return jsonify({"result": "not found"})
 
-    for text in texts:
-        chunk = text.description
-
-        for item in recycle_list:
-            if item == chunk:
-                return jsonify({"result": chunk})
+    for item in recycle_list:
+        if re.search(re.escape(item), texts):
+            return jsonify({"result": item})
 
     return jsonify({"result": "not found"})
 
