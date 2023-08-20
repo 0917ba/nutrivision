@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import { getDevice } from '../../lib/tts';
 import styles from './stylesheets/Video.module.css';
 
-function Video({ videoRef }) {
+interface VideoProps {
+  videoRef: React.RefObject<HTMLVideoElement>;
+}
+
+function Video({ videoRef }: VideoProps) {
   const getWebcam = () => {
     const device = getDevice();
     if (device === 'android' || device === 'ios') {
@@ -27,7 +31,7 @@ function Video({ videoRef }) {
 
   useEffect(() => {
     getWebcam().then((stream) => {
-      videoRef.current.srcObject = stream;
+      videoRef.current!.srcObject = stream;
     });
   }, []);
 

@@ -4,8 +4,13 @@ import { speechToText } from '../../lib/stt';
 import Button from '../Global/Button';
 import styles from './Modal.module.css';
 
-function Modal({ setModalOpen, homeInit }) {
-  const [speed, setSpeed] = useState(getSpeakRate());
+interface ModalProps {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  homeInit: () => Promise<void>;
+}
+
+function Modal({ setModalOpen, homeInit }: ModalProps) {
+  const [speed, setSpeed] = useState<string>(getSpeakRate());
   const [mode, setMode] = useState('시각장애인');
 
   const closeModal = () => {

@@ -4,6 +4,8 @@ import Video from '../../components/Global/Video';
 import Canvas from '../../components/Global/Canvas';
 import useNavigateTo from '../../hooks/useNavigateTo';
 
+const cycleLimit = 7;
+
 function Allergy() {
   const [allergy, setAllergy] = useState('');
   const [isAllergyDetected, setIsAllergyDetected] = useState(false);
@@ -64,7 +66,7 @@ function Allergy() {
     };
 
     const init = async () => {
-      let cycleCount = 0;
+      let cycleCnt = 0;
       await textToSpeech('알레르기 유발 성분을 탐색합니다.', 2);
       await textToSpeech(
         '카메라를 식품에 가까이 대고, 표시된 알레르기 유발 성분이 인식될 때까지 식품을 천천히 이동시켜주세요.',
@@ -72,14 +74,17 @@ function Allergy() {
       );
       const id = setInterval(() => {
         if (!intervalId) intervalId = id;
-        if (cycleCount >= 300) {
+        if (cycleCnt && cycleCnt % 14 === 0) {
+          textToSpeech('탐색중.', 0);
+        }
+        if (cycleCnt >= 300) {
           console.log('not found');
           clearInterval(intervalId);
           notFound();
         }
         drawToCanvas();
         sendImage();
-        cycleCount += 1;
+        cycleCnt += 1;
       }, 350);
     };
 
@@ -99,38 +104,31 @@ function Allergy() {
   }, []);
 
   useEffect(() => {
-    const dateDetected = async () => {
-      if (isAllergyDetected) {
-        console.log('data detected!');
-        await textToSpeech('알레르기 유발 성분이 감지되었습니다.', 1);
-      }
-    };
-
-    dateDetected();
+    if (isAllergyDetected) {
+      console.log('data detected!');
+      textToSpeech('알레르기 유발 성분이 감지되었습니다.', 1);
+    }
   }, [isAllergyDetected]);
 
   useEffect(() => {
-    (async () => {
-      const init = () => {
-        setIsAllergyDetected(false);
-        setResultArr([]);
-      };
+    const init = () => {
+      setIsAllergyDetected(false);
+      setResultArr([]);
+    };
 
-      if (resultArr.length >= 15) {
-        let { res } = getModeArr(resultArr);
-        if (res === '"not found"') {
-          console.log('failed.. begin to search');
-          init();
-          await textToSpeech('탐색중.', 0);
-        } else {
-          console.log('success!');
-          const allergyList = JSON.parse(res);
-          console.log(`found result is ${res}`);
-          init();
-          setAllergy(allergyList);
-        }
+    if (resultArr.length >= cycleLimit) {
+      let { res } = getModeArr(resultArr);
+      if (res === '"not found"') {
+        console.log('failed.. begin to search');
+        init();
+      } else {
+        console.log('success!');
+        const allergyList = JSON.parse(res);
+        console.log(`found result is ${res}`);
+        init();
+        setAllergy(allergyList);
       }
-    })();
+    }
   }, [resultArr]);
 
   useEffect(() => {

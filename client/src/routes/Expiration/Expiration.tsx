@@ -4,6 +4,8 @@ import Video from '../../components/Global/Video';
 import Canvas from '../../components/Global/Canvas';
 import useNavigateTo from '../../hooks/useNavigateTo';
 
+const cycleLimit = 7;
+
 function Expiration() {
   const [expiration, setExpiration] = useState<string>('');
   const [isDateDetected, setIsDateDetected] = useState<boolean>(false);
@@ -63,7 +65,7 @@ function Expiration() {
     };
 
     const init = async () => {
-      let cycleCount = 0;
+      let cycleCnt = 0;
       await textToSpeech('유통기한 탐색을 시작합니다.', 2);
       await textToSpeech(
         '카메라를 식품에 가까이 대고, 유통기한이 인식될 때까지 카메라를 천천히 이동시켜주세요.',
@@ -71,14 +73,17 @@ function Expiration() {
       );
       const id = setInterval(() => {
         if (!intervalId) intervalId = id;
-        if (cycleCount >= 300) {
+        if (cycleCnt && cycleCnt % 14 === 0) {
+          textToSpeech('탐색중.', 0);
+        }
+        if (cycleCnt >= 300) {
           console.log('not found');
           clearInterval(intervalId);
           notFound();
         }
         drawToCanvas();
         sendImage();
-        cycleCount += 1;
+        cycleCnt += 1;
       }, 350);
     };
 
@@ -98,39 +103,30 @@ function Expiration() {
   }, []);
 
   useEffect(() => {
-    const dateDetected = async () => {
-      if (isDateDetected) {
-        console.log('date detected!');
-        await textToSpeech('유통기한이 감지되었습니다.', 1);
-      }
-    };
-
-    dateDetected();
+    if (isDateDetected) {
+      console.log('date detected!');
+      textToSpeech('유통기한이 감지되었습니다.', 1);
+    }
   }, [isDateDetected]);
 
   useEffect(() => {
-    const cycleEnded = async () => {
-      const init = () => {
-        setIsDateDetected(false);
-        setResultArr([]);
-      };
-
-      if (resultArr.length >= 10) {
-        let { res } = getMode(resultArr);
-        if (res === 'not found') {
-          console.log('failed.. begin to search');
-          init();
-          await textToSpeech('탐색중.', 0);
-        } else {
-          console.log('success!');
-          console.log(`found result is ${res}`);
-          init();
-          setExpiration(res);
-        }
-      }
+    const init = () => {
+      setIsDateDetected(false);
+      setResultArr([]);
     };
 
-    cycleEnded();
+    if (resultArr.length >= cycleLimit) {
+      let { res } = getMode(resultArr);
+      if (res === 'not found') {
+        console.log('failed.. begin to search');
+        init();
+      } else {
+        console.log('success!');
+        console.log(`found result is ${res}`);
+        init();
+        setExpiration(res);
+      }
+    }
   }, [resultArr]);
 
   useEffect(() => {

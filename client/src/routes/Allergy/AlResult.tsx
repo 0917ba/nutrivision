@@ -53,7 +53,7 @@ function AlResult() {
 
   return (
     <div className={styles.center}>
-      <p className={styles.first}> 식품에 함유된 알레르기 유발성분으로</p>
+      <p className={styles.first}> 식품에 함유된 알레르기 유발성분은</p>
       <div className={styles.textcolor}>
         {location.state.allergyList.map((element: string, index: number) => (
           <span className={styles.second} key={index}>

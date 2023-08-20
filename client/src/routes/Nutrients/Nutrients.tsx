@@ -5,6 +5,8 @@ import Video from '../../components/Global/Video';
 import Canvas from '../../components/Global/Canvas';
 import useNavigateTo from '../../hooks/useNavigateTo';
 
+const cycleLimit = 7;
+
 function Nutrients() {
   const [productNum, setProductNum] = useState<string>('');
   const [isNumDetected, setIsNumDetected] = useState<boolean>(false);
@@ -57,6 +59,7 @@ function Nutrients() {
 
   const getProductName = async (productNum: string) => {
     const apiKey = process.env.REACT_APP_FOOD_API_KEY as string;
+
     //try: 일반 식품
     let url = `http://openapi.foodsafetykorea.go.kr/api/${apiKey}/I1250/json/1/1/PRDLST_REPORT_NO=${productNum}`;
     let response = await fetch(url);
@@ -118,6 +121,9 @@ function Nutrients() {
       );
       const id = setInterval(() => {
         if (!intervalId) intervalId = id;
+        if (cycleCnt && cycleCnt % 14 === 0) {
+          textToSpeech('탐색중.', 0);
+        }
         if (cycleCnt >= 300) {
           console.log('not found');
           clearInterval(intervalId);
@@ -153,12 +159,11 @@ function Nutrients() {
   }, [isNumDetected]);
 
   useEffect(() => {
-    if (resultArr.length >= 10) {
+    if (resultArr.length >= cycleLimit) {
       search.current = false;
       let { res } = getMode(resultArr);
       if (res === 'not found') {
         console.log('failed.. begin to search');
-        textToSpeech('탐색중.', 0);
         search.current = true;
       } else {
         console.log('success!');
@@ -172,7 +177,6 @@ function Nutrients() {
   }, [resultArr]);
 
   useEffect(() => {
-    //console.log(isFirstLoaded.current);
     if (!isFirstLoaded.current && productNum !== '') {
       getProductName(productNum)
         .then((productName) => getNutrients(productName))
