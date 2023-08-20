@@ -13,14 +13,15 @@ import useNavigateTo from '../../hooks/useNavigateTo';
 function Restaurant() {
   const [displayText, setDisplayText] = useState('');
   const userRestaurant = useRef<string>('');
-  const userMenu = useRef<string>('');
 
   const navigateTo = useNavigateTo();
 
   const getNutrients = async () => {
+    let userMenu: string;
+
     const fetchNutrients = async () => {
       const apiKey = process.env.REACT_APP_FOOD_API_KEY as string;
-      const url = `https://openapi.foodsafetykorea.go.kr/api/${apiKey}/I2790/json/1/100/DESC_KOR=${userMenu}&MAKER_NAME=${userRestaurant}`;
+      const url = `https://openapi.foodsafetykorea.go.kr/api/${apiKey}/I2790/json/1/100/DESC_KOR=${userMenu}&MAKER_NAME=${userRestaurant.current}`;
       const response = await fetch(url);
       const json = await response.json();
 
@@ -44,7 +45,6 @@ function Restaurant() {
         const userResponse = await speechToText(2500);
         if (positiveResponse.has(userResponse)) {
           nutrients = setNutrients(nutrientsData);
-          console.log(nutrients);
           isCorrectRes = true;
           break;
         }
@@ -64,11 +64,11 @@ function Restaurant() {
 
     setDisplayText('주문하실 메뉴의 이름을 말씀해주세요.');
     await textToSpeech('주문하실 메뉴의 이름을 말씀해주세요.', 1);
-    userMenu.current = await speechToText(3000);
+    userMenu = await speechToText(3000);
 
     const rawNutrients = await fetchNutrients();
     if (rawNutrients !== null) selectProduct(rawNutrients);
-    else if (userMenu.current === '취소') {
+    else if (userMenu === '취소') {
       setDisplayText('첫 화면으로 이동합니다.');
       await textToSpeech('첫 화면으로 이동합니다.', 1);
       navigateTo('/home');
