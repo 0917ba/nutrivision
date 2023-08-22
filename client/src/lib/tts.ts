@@ -66,8 +66,9 @@ async function textToSpeech(text: string, importantRate = 1) {
 
 async function getAudioSource(text: string, speakRate = '1.4') {
   const speed = Number(speakRate);
-  const url =
-    'https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyCxnSFvcQd6a17xfB4nDwDafJH_juHSNA0';
+  const googleCloudKey = process.env.REACT_APP_GOOGLE_CLOUD_KEY;
+
+  const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${googleCloudKey}`;
   const audioData = {
     input: {
       text: text,

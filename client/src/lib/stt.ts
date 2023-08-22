@@ -10,8 +10,8 @@ async function speechToText(interval = 3000): Promise<string> {
 
   //audioBase64: plain b64 string
   const b64AudioToString = async (audioBase64: string) => {
-    const url =
-      'https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyCxnSFvcQd6a17xfB4nDwDafJH_juHSNA0';
+    const googleCloudKey = process.env.REACT_APP_GOOGLE_CLOUD_KEY;
+    const url = `https://speech.googleapis.com/v1/speech:recognize?key=${googleCloudKey}`;
 
     // POST data
     const data = {

@@ -8,8 +8,7 @@ import re
 import time
 
 
-# /home/0917ba2/mysite/celestial-shore-380106-8271a95fb3ec.json
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./celestial-shore-380106-8271a95fb3ec.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./key/google_api_key.json"
 
 client = vision.ImageAnnotatorClient()
 
@@ -133,7 +132,7 @@ def recycle():
     return jsonify({"result": "not found"})
 
 
-@app.route("/alergy", methods=['POST'])
+@app.route("/allergy", methods=['POST'])
 def alergy():
     try:
         imagestring = request.form['imageInfo']

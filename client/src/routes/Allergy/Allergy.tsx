@@ -39,7 +39,7 @@ function Allergy() {
         formData.append('imageInfo', image);
 
         const serverUrl = process.env.REACT_APP_SERVER_URL as string;
-        fetch(serverUrl + '/alergy', {
+        fetch(serverUrl + '/allergy', {
           method: 'POST',
           body: formData,
         })
