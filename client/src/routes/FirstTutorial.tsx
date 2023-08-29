@@ -15,7 +15,9 @@ function FirstTutorial() {
   useEffect(() => {
     const init = async () => {
       await textToSpeech('안녕하세요, 뉴트리비전에 오신 걸 환영합니다.', 3);
-      await textToSpeech('이 앱의 사용 방법을 알고 계시나요?');
+      await textToSpeech(
+        '이 앱의 사용 방법을 알고 계시나요? 띵 소리가 난 후에 말씀해주세요.'
+      );
       const res = await speechToText(3000);
       if (negativeResponse.has(res)) {
         await textToSpeech('이 앱에 대한 설명을 들려드리겠습니다.');
@@ -48,7 +50,7 @@ function FirstTutorial() {
           imgSource="setting"
           imgclassname={styles.decoimgbtn}
         />
-        <img className={styles.ishslogo} src={ISHSlogo} alt="logo"></img>
+        {/*<img className={styles.ishslogo} src={ISHSlogo} alt="logo"></img>*/}
       </div>
 
       <div className={styles.aboutlogo}>
@@ -71,7 +73,7 @@ function FirstTutorial() {
         <div className={styles.divbtntwo}>
           <Button
             classname={styles.myButtonone}
-            text="재활용"
+            text="분리배출"
             //onClick={() => navigateTo("/restaurant")}
           />
 
