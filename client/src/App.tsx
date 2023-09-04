@@ -1,21 +1,20 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './routes/Home';
-import Nutrients from './routes/Nutrients/Nutrients';
-import NuResult from './routes/Nutrients/NuResult';
-import Expiration from './routes/Expiration/Expiration';
-import ExResult from './routes/Expiration/ExResult';
-import Restaurant from './routes/Restaurant/Restaurant';
-import ReResult from './routes/Restaurant/ReResult';
-import Recycle from './routes/Recycle/Recycle';
-import Rcresult from './routes/Recycle/Rcresult';
-import Help from './routes/Help/Help';
-import First from './routes/First';
-import FirstTutorial from './routes/FirstTutorial';
-import Allergy from './routes/Allergy/Allergy';
-import AlResult from './routes/Allergy/AlResult';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./routes/Home";
+import Nutrients from "./routes/Nutrients/Nutrients";
+import NuResult from "./routes/Nutrients/NuResult";
+import Expiration from "./routes/Expiration/Expiration";
+import ExResult from "./routes/Expiration/ExResult";
+import Restaurant from "./routes/Restaurant/Restaurant";
+import ReResult from "./routes/Restaurant/ReResult";
+import Recycle from "./routes/Recycle/Recycle";
+import Rcresult from "./routes/Recycle/Rcresult";
+import Help from "./routes/Help/Help";
+import Setting from "./routes/Setting/Setting";
+import Allergy from "./routes/Allergy/Allergy";
+import AlResult from "./routes/Allergy/AlResult";
 
 function App() {
-  //<Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+  <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />;
 
   return (
     <Router>
@@ -30,11 +29,9 @@ function App() {
         <Route path="/recycle/result" element={<Rcresult />} />
         <Route path="/home" element={<Home />} />
         <Route path="/help" element={<Help />} />
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<First />} />
-        <Route path="/" element={<First />} />
-        <Route path="/tutorial" element={<FirstTutorial />} />
         <Route path="/allergy" element={<Allergy />} />
         <Route path="/allergy/result" element={<AlResult />} />
+        <Route path="/settings" element={<Setting />} />
       </Routes>
     </Router>
   );
