@@ -8,44 +8,6 @@ import useNavigateTo from "../../hooks/useNavigateTo";
 import { symbol } from "prop-types";
 
 function Help() {
-  const navigateTo = useNavigateTo();
-
-  useEffect(() => {
-    const readHelp = async () => {
-      await explainBtn();
-
-      await textToSpeech(
-        "이 앱의 개발자와 이 앱의 개발 배경에 대해 설명해드릴까요?",
-        1
-      );
-      const userRes = await speechToText(3000);
-      if (positiveResponse.has(userRes)) {
-        await explainApp();
-      }
-      await textToSpeech("도움말을 다시 들려드릴까요?", 1);
-      const userResult = await speechToText(3000);
-      if (positiveResponse.has(userResult)) {
-        readHelp();
-      } else {
-        await textToSpeech("첫 화면으로 돌아갑니다.", 1);
-        navigateTo("/home");
-      }
-    };
-
-    const preventGoBack = () => {
-      window.history.pushState(null, "", window.location.href);
-    };
-
-    window.history.pushState(null, "", window.location.href);
-    window.addEventListener("popstate", preventGoBack);
-
-    readHelp();
-
-    return () => {
-      window.removeEventListener("popstate", preventGoBack);
-    };
-  }, []);
-
   return (
     <div className={styles.center}>
       <h1 className={styles.prettytext}> 도움말 </h1>
