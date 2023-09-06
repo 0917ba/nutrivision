@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+}
+.textcolor {
+  background-color: rgba(92, 206, 251, 0.824);
+  display: inline;
+}
+
+.first {
+  font-size: 30px;
+}
+.second {
+  font-size: 50px;
+}
