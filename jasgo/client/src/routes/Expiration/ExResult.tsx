@@ -5,6 +5,7 @@ import { speechToText } from '../../lib/stt';
 import { positiveResponse } from '../../lib/sttHandle';
 import styles from './ExResult.module.css';
 import useNavigateTo from '../../hooks/useNavigateTo';
+import Button from '../../components/Global/Button';
 
 type ExpirationType = 0 | 1 | 2 | null;
 
@@ -25,7 +26,7 @@ function ExResult() {
       return resDate;
     };
 
-    const speakInfo = async () => {
+    const speakInfo = () => {
       let ndate = new Date();
       const pdate = new Date(location.state.resDate);
 
@@ -36,32 +37,32 @@ function ExResult() {
 
         if (tmpdate <= ndate) {
           setExpireType(1);
-          await textToSpeech(
-            '제품의 유통기한이 얼마남지 않았습니다. 빠른 시일 내에 섭취하시길 권고드립니다.',
-            3
-          );
+          // await textToSpeech(
+            // '제품의 유통기한이 얼마남지 않았습니다. 빠른 시일 내에 섭취하시길 권고드립니다.',
+            // 3
+          // );
         } else {
           setExpireType(2);
-          await textToSpeech('먹어도 좋습니다.', 3);
+          // await textToSpeech('먹어도 좋습니다.', 3);
         }
       } else {
         setExpireType(0);
-        await textToSpeech('건강에 위험할 수 있습니다.', 3);
+        // await textToSpeech('건강에 위험할 수 있습니다.', 3);
       }
     };
 
-    const speakDate = async () => {
-      await textToSpeech(ttsText, 7);
-      await speakInfo();
-      await textToSpeech('다시 들려드릴까요?', 4);
-      const userRes = await speechToText(3000);
-      if (positiveResponse.has(userRes)) {
-        speakDate();
-      } else {
-        await textToSpeech('첫 화면으로 이동합니다.', 1);
-        navigateTo('/home');
-      }
-    };
+    // const speakDate = async () => {
+    //   await textToSpeech(ttsText, 7);
+    //   await speakInfo();
+    //   await textToSpeech('다시 들려드릴까요?', 4);
+    //   const userRes = await speechToText(3000);
+    //   if (positiveResponse.has(userRes)) {
+    //     speakDate();
+    //   } else {
+    //     await textToSpeech('첫 화면으로 이동합니다.', 1);
+    //     navigateTo('/home');
+    //   }
+    // };
 
     const preventGoBack = () => {
       window.history.pushState(null, '', window.location.href);
@@ -75,7 +76,7 @@ function ExResult() {
 
     const speakTotal = async () => {
       setText(resDate);
-      await speakDate();
+      speakInfo();
     };
 
     speakTotal();
@@ -106,6 +107,7 @@ function ExResult() {
       <div>
         {expireType === 2 && <p className={styles.caneat}>먹어도 좋습니다.</p>}
       </div>
+      <Button classname='' text="홈 화면으로" onClick={() => navigateTo('/home')}/>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import SterileCarton from '../../images/SterileCarton.jpg';
 import PaperCarton from '../../images/PaperCarton.png';
 import Vinyl from '../../images/Vinyl.jpg';
 import useNavigateTo from '../../hooks/useNavigateTo';
+import Button from '../../components/Global/Button';
 
 function RcResult() {
   const navigateTo = useNavigateTo();
@@ -198,24 +199,27 @@ function RcResult() {
     }
   }, [location.state.resRecycle]);
 
-  useEffect(() => {
-    const readRecyle = async () => {
-      if (!message) return;
-      await textToSpeech(message, 5);
-      await textToSpeech('분리배출 방법을 다시 들려드릴까요?', 3);
-      const userRes = await speechToText(3000);
-      if (positiveResponse.has(userRes)) {
-        readRecyle();
-      } else {
-        await textToSpeech('첫 화면으로 이동합니다.', 3);
-        navigateTo('/home');
-      }
-    };
+  // useEffect(() => {
+  //   const readRecyle = async () => {
+  //     if (!message) return;
+  //     await textToSpeech(message, 5);
+  //     await textToSpeech('분리배출 방법을 다시 들려드릴까요?', 3);
+  //     const userRes = await speechToText(3000);
+  //     if (positiveResponse.has(userRes)) {
+  //       readRecyle();
+  //     } else {
+  //       await textToSpeech('첫 화면으로 이동합니다.', 3);
+  //       navigateTo('/home');
+  //     }
+  //   };
 
-    readRecyle();
-  }, [message]);
+  //   readRecyle();
+  // }, [message]);
 
-  return <div>{component}</div>;
+  return <div>
+    {component}
+    <Button classname='' text="홈 화면으로" onClick={() => navigateTo('/home')}/>
+    </div>;
 }
 
 export default RcResult;

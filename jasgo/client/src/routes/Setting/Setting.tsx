@@ -3,9 +3,12 @@ import { textToSpeech, getSpeakRate, setSpeakRate } from "../../lib/tts";
 import { speechToText } from "../../lib/stt";
 import Button from "../../components/Global/Button";
 import styles from "./Setting.module.css";
+import useNavigateTo from "../../hooks/useNavigateTo";
 
 function Setting() {
   const [speed, setSpeed] = useState<string>(getSpeakRate());
+
+  const navigateTo = useNavigateTo();
 
   useEffect(() => {
     setSpeakRate(speed);
@@ -43,6 +46,7 @@ function Setting() {
           <label>빠름</label>
         </div>
       </div>
+      <Button classname='' text="홈 화면으로" onClick={() => navigateTo('/home')}/>
     </div>
   );
 }

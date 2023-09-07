@@ -12,6 +12,7 @@ import {
 import styles from './ReResult.module.css';
 import useNavigateTo from '../../hooks/useNavigateTo';
 import { NutrientsRate, ResultNutrient } from '../../types/nutrient';
+import Button from '../../components/Global/Button';
 
 function ReResult() {
   const navigateTo = useNavigateTo();
@@ -24,30 +25,30 @@ function ReResult() {
   const calorie = result.current.calorie;
 
   useEffect(() => {
-    const readNutrients = async () => {
-      await readNutrientsObject(result.current);
+    // const readNutrients = async () => {
+    //   await readNutrientsObject(result.current);
 
-      const resForRate = await askForRate();
-      if (resForRate === true) {
-        const nutrientsRate = getNutrientsRate(result.current);
-        setRate(nutrientsRate);
-        await readNutrientsRate(nutrientsRate);
-      }
+    //   const resForRate = await askForRate();
+    //   if (resForRate === true) {
+    //     const nutrientsRate = getNutrientsRate(result.current);
+    //     setRate(nutrientsRate);
+    //     await readNutrientsRate(nutrientsRate);
+    //   }
 
-      await textToSpeech('영양성분 정보를 다시 들려드릴까요?', 1);
-      const userRes = await speechToText(3000);
-      if (positiveResponse.has(userRes)) {
-        readNutrients();
-      } else {
-        await textToSpeech('첫 화면으로 이동합니다.', 1);
-        navigateTo('/home');
-      }
-    };
+    //   await textToSpeech('영양성분 정보를 다시 들려드릴까요?', 1);
+    //   const userRes = await speechToText(3000);
+    //   if (positiveResponse.has(userRes)) {
+    //     readNutrients();
+    //   } else {
+    //     await textToSpeech('첫 화면으로 이동합니다.', 1);
+    //     navigateTo('/home');
+    //   }
+    // };
 
     const init = async () => {
       stopTTS();
       await textToSpeech('제품을 찾았습니다.', 2);
-      readNutrients();
+      // readNutrients();
     };
 
     const preventGoBack = () => {
@@ -100,6 +101,7 @@ function ReResult() {
 
         <li className={styles.decolisad}>트랜스지방 | {nutrients.transFat}g</li>
       </ul>
+      <Button classname='' text="홈 화면으로" onClick={() => navigateTo('/home')}/>
     </div>
   );
 }

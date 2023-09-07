@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import { textToSpeech } from "../../lib/tts";
 import styles from "./Help.module.css";
 import { speechToText } from "../../lib/stt";
-import { explainApp, explainBtn } from "../../lib/readHelp";
 import { positiveResponse } from "../../lib/sttHandle";
 import useNavigateTo from "../../hooks/useNavigateTo";
 import { symbol } from "prop-types";
+import Button from "../../components/Global/Button";
 
 function Help() {
+
+  const navigateTo = useNavigateTo();
+
   return (
     <div className={styles.center}>
       <h1 className={styles.prettytext}> 도움말 </h1>
@@ -145,6 +148,7 @@ function Help() {
           </p>
         </div>
       </div>
+      <Button classname='' text="홈 화면으로" onClick={() => navigateTo('/home')}/>
     </div>
   );
 }
