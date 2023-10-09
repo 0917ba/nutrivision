@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "2023-ISHS-JRH/static/css/main.be809259.css",
-    "main.js": "2023-ISHS-JRH/static/js/main.b398ca5a.js",
-    "service-worker.js": "2023-ISHS-JRH/service-worker.js",
-    "static/media/Glass.jpg": "2023-ISHS-JRH/static/media/Glass.022913b990ef9ffefeb8.jpg",
-    "static/media/PlainCarton.jpg": "2023-ISHS-JRH/static/media/PlainCarton.e49a1d4c640c60caad58.jpg",
-    "static/media/NonColorPET.jpg": "2023-ISHS-JRH/static/media/NonColorPET.063ee4906847a02e7fad.jpg",
-    "static/media/SterileCarton.jpg": "2023-ISHS-JRH/static/media/SterileCarton.90bc9644928f097b78bc.jpg",
-    "static/media/Paper.jpg": "2023-ISHS-JRH/static/media/Paper.70b9d63a104721d982c1.jpg",
-    "static/media/Plastic.jpg": "2023-ISHS-JRH/static/media/Plastic.41c8d6075d105aa90dc6.jpg",
-    "static/media/PaperCarton.png": "2023-ISHS-JRH/static/media/PaperCarton.38cf14e28c4c8f6ad856.png",
-    "static/media/Vinyl.jpg": "2023-ISHS-JRH/static/media/Vinyl.f8e7023e2dd2cba88f1a.jpg",
-    "index.html": "2023-ISHS-JRH/index.html",
-    "main.be809259.css.map": "2023-ISHS-JRH/static/css/main.be809259.css.map",
-    "main.b398ca5a.js.map": "2023-ISHS-JRH/static/js/main.b398ca5a.js.map"
+    "main.css": "/2023-ISHS-JRH/static/css/main.2184fb20.css",
+    "main.js": "/2023-ISHS-JRH/static/js/main.a6dddde2.js",
+    "service-worker.js": "/2023-ISHS-JRH/service-worker.js",
+    "static/media/Glass.jpg": "/2023-ISHS-JRH/static/media/Glass.022913b990ef9ffefeb8.jpg",
+    "static/media/PlainCarton.jpg": "/2023-ISHS-JRH/static/media/PlainCarton.e49a1d4c640c60caad58.jpg",
+    "static/media/NonColorPET.jpg": "/2023-ISHS-JRH/static/media/NonColorPET.063ee4906847a02e7fad.jpg",
+    "static/media/SterileCarton.jpg": "/2023-ISHS-JRH/static/media/SterileCarton.90bc9644928f097b78bc.jpg",
+    "static/media/Paper.jpg": "/2023-ISHS-JRH/static/media/Paper.70b9d63a104721d982c1.jpg",
+    "static/media/Plastic.jpg": "/2023-ISHS-JRH/static/media/Plastic.41c8d6075d105aa90dc6.jpg",
+    "static/media/PaperCarton.png": "/2023-ISHS-JRH/static/media/PaperCarton.38cf14e28c4c8f6ad856.png",
+    "static/media/Vinyl.jpg": "/2023-ISHS-JRH/static/media/Vinyl.f8e7023e2dd2cba88f1a.jpg",
+    "index.html": "/2023-ISHS-JRH/index.html",
+    "main.2184fb20.css.map": "/2023-ISHS-JRH/static/css/main.2184fb20.css.map",
+    "main.a6dddde2.js.map": "/2023-ISHS-JRH/static/js/main.a6dddde2.js.map"
   },
   "entrypoints": [
-    "static/css/main.be809259.css",
-    "static/js/main.b398ca5a.js"
+    "static/css/main.2184fb20.css",
+    "static/js/main.a6dddde2.js"
   ]
 }
