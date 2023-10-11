@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/2023-ISHS-JRH/static/css/main.47c38d44.css",
-    "main.js": "/2023-ISHS-JRH/static/js/main.fb18f830.js",
+    "main.css": "/2023-ISHS-JRH/static/css/main.e3dff5bd.css",
+    "main.js": "/2023-ISHS-JRH/static/js/main.1215843c.js",
     "static/media/logo.jpg": "/2023-ISHS-JRH/static/media/logo.bfeaf0b6db351b248f77.jpg",
     "static/media/Setting.png": "/2023-ISHS-JRH/static/media/Setting.9fd72f485971816f90ee.png",
     "service-worker.js": "/2023-ISHS-JRH/service-worker.js",
@@ -14,11 +14,11 @@
     "static/media/PaperCarton.png": "/2023-ISHS-JRH/static/media/PaperCarton.38cf14e28c4c8f6ad856.png",
     "static/media/Vinyl.jpg": "/2023-ISHS-JRH/static/media/Vinyl.f8e7023e2dd2cba88f1a.jpg",
     "index.html": "/2023-ISHS-JRH/index.html",
-    "main.47c38d44.css.map": "/2023-ISHS-JRH/static/css/main.47c38d44.css.map",
-    "main.fb18f830.js.map": "/2023-ISHS-JRH/static/js/main.fb18f830.js.map"
+    "main.e3dff5bd.css.map": "/2023-ISHS-JRH/static/css/main.e3dff5bd.css.map",
+    "main.1215843c.js.map": "/2023-ISHS-JRH/static/js/main.1215843c.js.map"
   },
   "entrypoints": [
-    "static/css/main.47c38d44.css",
-    "static/js/main.fb18f830.js"
+    "static/css/main.e3dff5bd.css",
+    "static/js/main.1215843c.js"
   ]
 }
